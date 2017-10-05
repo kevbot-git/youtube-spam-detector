@@ -1,4 +1,5 @@
 import sys, glob, csv, codecs
+from textblob.classifiers import NaiveBayesClassifier
 
 def main():
 	model_filenames, deploy_filenames = sysargs()
@@ -6,19 +7,43 @@ def main():
 
 def create_model(filenames):
 	data = extract_data(filenames)
+	classifier = []
 
+def main_classifier(data):
+	training = []
+	testing = []
+	for x in data:
+		for z in x:
+
+	
 # Returns an array of tuples: [('text here 123 testing', true)]
 # The first tuple entry is a comment's text, the second classifies it as SPAM or HAM
 # Data file structure:	COMMENT_ID,	AUTHOR,		DATE,		CONTENT,	CLASS
 # 						0			1			2			3			4
 def extract_data(filenames):
-	for i in range(0, len(filenames)):
-		print('Loading \'' + filenames[i] + '\'')
-		with codecs.open(filenames[i], 'r', encoding='utf-8') as f: # Was having trouble with encoding, this solves issues
-			file_entries = csv.reader(f)
-			for line in file_entries:
-				print(line)
-	return 0
+	alldata = []
+	for x in filenames:
+		with open(x, 'r') as f:
+			thisfilesdata = []
+			csvRead = csv.reader(f, delimiter=',')
+			namesofcolumns = []
+			for index, value in enumerate(csvRead):
+				if index == 0:
+					for z in value:
+						namesofcolumns.append(z)
+				else:
+					obj = {}
+					for indexTwo, valueTwo in enumerate(value):
+						obj[namesofcolumns[indexTwo]] = valueTwo
+					thisfilesdata.append(obj)
+			alldata.append(thisfilesdata)
+	return alldata
+	# for i in range(0, len(filenames)):
+	# 	print('Loading \'' + filenames[i] + '\'')
+	# 	with codecs.open(filenames[i], 'r', encoding='utf-8') as f: # Was having trouble with encoding, this solves issues
+	# 		file_entries = csv.reader(f)
+	# 		for line in file_entries:
+	# 			print(line)
 
 # Returns a tuple: (model_filename, deploy_filename)
 def sysargs():
