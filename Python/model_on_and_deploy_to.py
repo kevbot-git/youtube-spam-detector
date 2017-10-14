@@ -78,8 +78,9 @@ def extract_data(filenames):
 # Returns a tuple: (model_filename, deploy_filename)
 def sysargs():
     if (len(sys.argv) > 2):
-        datafilenames = sys.argv[1:len(sys.argv)-1]
+        datafilenames = sys.argv[1:len(sys.argv)]
         if datafilenames != []:
+            print(datafilenames)
             return datafilenames
         else:
             print('Error: search strings must match at least one file each.')
