@@ -1,5 +1,6 @@
 import sys, glob, csv, codecs
 from textblob.classifiers import NaiveBayesClassifier
+import nltk
 from sklearn.model_selection import train_test_split # requires numpy, scipy
 from random import randrange
 
@@ -9,12 +10,34 @@ def main():
 
 def create_model(filenames):
     data = extract_data(filenames)
-    for x in range(1, 100):
+    for x in range(1, 2):
         print("Iteration #"+str(x))
         for z in data:
-            train, test = train_test_split(z, shuffle=True, test_size=0.3, random_state=randrange(100))
+            labeled_comments = ([({"author":comment['AUTHOR'], "date":comment['DATE'],'content': comment['CONTENT']}, comment['CLASS'])for comment in z])
+            train, test = train_test_split(labeled_comments, shuffle=True, test_size=0.3, random_state=randrange(100))
+            # print(train[0:10])
+            # print(test[0:10])
+            classifier = nltk.NaiveBayesClassifier.train(train)
             print("Size of train: "+ str(len(train))+ " size of test: "+str(len(test)))
-    classifier = []
+            print("Accuracy: "+str(nltk.classify.accuracy(classifier, test)))
+            truepositives = 0
+            truenegatives = 0
+            falsepositives = 0
+            falsenegatives = 0
+            for y in test:
+                guess = classifier.classify({"author": y[0]['author'], "date":  y[0]['date'], "content":  y[0]['content']})
+                if y[1] == '0':
+                    if guess == '0':
+                        truenegatives = truenegatives+ 1
+                    elif guess == '1':
+                        falsepositives = falsepositives+ 1
+                elif y[1] == '1':
+                    if guess == '0':
+                        falsenegatives = falsenegatives+ 1
+                    elif guess == '1':
+                        truepositives = truepositives+ 1
+            print("TP: {} TN: {} FP: {} FN: {}".format(truepositives, truenegatives, falsepositives, falsenegatives ))
+            # print("Test example "+str(test[0])+"\n Result: "+str()))
 
 def main_classifier(data):
     training = []
