@@ -63,10 +63,13 @@ def main():
         truepositives, truenegatives, falsepositives, falsenegatives = buildconfusionmetrics(predicted, testlabels)
         truepositivesvm, truenegativesvm, falsepositivesvm, falsenegativesvm = buildconfusionmetrics(predictedsvm,testlabels)
         truepositivebern, truenegativebern, falsepositivebern, falsenegativebern = buildconfusionmetrics(predictedbern,testlabels)
+        fscore, accuracy,truepositiverate,truenegativerate, precision = computeStatistics(truepositives, truenegatives, falsepositives, falsenegatives)
+        fscorebern, accuracybern,truepositiveratebern,truenegativeratebern, precisionbern = computeStatistics(truepositivebern, truenegativebern, falsepositivebern, falsenegativebern)
+        fscoresvm, accuracysvm,truepositiveratesvm,truenegativeratesvm, precisionsvm = computeStatistics(truepositivesvm, truenegativesvm, falsepositivesvm, falsenegativesvm)
         print("(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on {} records from {} test set".format(str(len(test)), data_filenames[y]))
         print("_______________________")
         print(tabulate([['SPAM', "("+str(truepositives)+", "+str(truepositivesvm)+", "+str(truepositivebern)+")", "("+str(falsepositives)+", "+str(falsepositivesvm)+", "+str(falsepositivebern)+")"], ['HAM', "("+str(falsenegatives)+", "+str(falsenegativesvm)+", "+str(falsenegativebern)+")", "("+str(truenegatives)+", "+str(truenegativesvm)+", "+str(truenegativebern)+")"]],headers=["",'SPAM', 'HAM']))
-
+        print("FScore: ({},{},{}), Accuracy: ({},{},{}), Precision: ({},{},{}), TPR: ({},{},{}), TNR: ({},{},{})".format(fscore,fscoresvm,fscorebern,accuracy,accuracysvm,accuracybern, precision, precisionsvm, precisionbern, truepositiverate, truepositiveratesvm, truepositiveratebern, truenegativerate, truenegativeratesvm, truenegativeratebern))
         print("_______________________")
         for ytoo,ztoo in enumerate(data):
             if (ytoo != y):
@@ -117,16 +120,55 @@ def main():
         fscore, accuracy,truepositiverate,truenegativerate, precision = computeStatistics(truepositives, truenegatives, falsepositives, falsenegatives)
         fscorebern, accuracybern,truepositiveratebern,truenegativeratebern, precisionbern = computeStatistics(truepositivebern, truenegativebern, falsepositivebern, falsenegativebern)
         fscoresvm, accuracysvm,truepositiveratesvm,truenegativeratesvm, precisionsvm = computeStatistics(truepositivesvm, truenegativesvm, falsepositivesvm, falsenegativesvm)
+        actualSpam = 0
+        actualHam = 0
+        for x in testsetclasses:
+            if x == '1':
+                actualSpam += 1
+            elif x == '0':
+                actualHam += 1
         print("Building a MultinominalNB Classifier, SVM Classifier and a BernoulliNB Classifier with {} records from all files except {}".format(str(len(trainset)), data_filenames[counter]))
         print("(NaiveBayesClassifier, SVM Classifier BernoulliNB Classifier) results on {} records from {} test set".format(str(len(testset)), data_filenames[counter]))
-        print(tabulate([['SPAM', "("+str(truepositives)+", "+str(truepositivesvm)+", "+str(truepositivebern)+")", "("+str(falsepositives)+", "+str(falsepositivesvm)+", "+str(falsepositivebern)+")"], ['HAM', "("+str(falsenegatives)+", "+str(falsenegativesvm)+", "+str(falsenegativebern)+")", "("+str(truenegatives)+", "+str(truenegativesvm)+", "+str(truenegativebern)+")"],['ACTUAL',0,0]],headers=["",'SPAM', 'HAM']))
+        print(tabulate([['SPAM', "("+str(truepositives)+", "+str(truepositivesvm)+", "+str(truepositivebern)+")", "("+str(falsepositives)+", "+str(falsepositivesvm)+", "+str(falsepositivebern)+")"], ['HAM', "("+str(falsenegatives)+", "+str(falsenegativesvm)+", "+str(falsenegativebern)+")", "("+str(truenegatives)+", "+str(truenegativesvm)+", "+str(truenegativebern)+")"],['ACTUAL',actualSpam,actualHam]],headers=["",'SPAM', 'HAM']))
         print("FScore: ({},{},{}), Accuracy: ({},{},{}), Precision: ({},{},{}), TPR: ({},{},{}), TNR: ({},{},{})".format(fscore,fscoresvm,fscorebern,accuracy,accuracysvm,accuracybern, precision, precisionsvm, precisionbern, truepositiverate, truepositiveratesvm, truepositiveratebern, truenegativerate, truenegativeratesvm, truenegativeratebern))
         print("--------------------------------------------------------------------------------------------------------------------------------------\n")
         counter+=1
-
-
-
-
+    alldatacollated = []
+    for x in data:
+        for z in x:
+            alldatacollated.append(z)
+    train, test = train_test_split(alldatacollated, shuffle=True, test_size=0.3, random_state=randrange(100))
+    trainlist=[str(x['AUTHOR'])+str(x['DATE'])+str(x['CONTENT'])  for x in train]
+    trainlistlabels=[x['CLASS'] for x in train]
+    testlist = [str(x['AUTHOR'])+str(x['DATE'])+str(x['CONTENT']) for x in test]
+    testlistlabels=[x['CLASS'] for x in test]
+    text_clf_svm = Pipeline([('vect', CountVectorizer()),('tfidf', TfidfTransformer()),('svm',svm.LinearSVC()), ])
+    text_clf_bern = Pipeline([('vect', CountVectorizer()), ('classifier', BernoulliNB()),])
+    text_clf = Pipeline([('vectorizer', CountVectorizer()),('transformer', TfidfTransformer()),('classifier', MultinomialNB())])
+    text_clf.fit(trainlist, trainlistlabels)
+    text_clf_bern.fit(trainlist, trainlistlabels)
+    text_clf_svm.fit(trainlist,trainlistlabels)
+    predicted = text_clf.predict(testlist)
+    predictedsvm = text_clf_svm.predict(testlist)
+    predictedbern = text_clf_bern.predict(testlist)
+    truepositives, truenegatives, falsepositives, falsenegatives = buildconfusionmetrics(predicted, testlistlabels)
+    truepositivesvm, truenegativesvm, falsepositivesvm, falsenegativesvm = buildconfusionmetrics(predictedsvm,testlistlabels)
+    truepositivebern, truenegativebern, falsepositivebern, falsenegativebern = buildconfusionmetrics(predictedbern,testlistlabels)
+    fscore, accuracy,truepositiverate,truenegativerate, precision = computeStatistics(truepositives, truenegatives, falsepositives, falsenegatives)
+    fscorebern, accuracybern,truepositiveratebern,truenegativeratebern, precisionbern = computeStatistics(truepositivebern, truenegativebern, falsepositivebern, falsenegativebern)
+    fscoresvm, accuracysvm,truepositiveratesvm,truenegativeratesvm, precisionsvm = computeStatistics(truepositivesvm, truenegativesvm, falsepositivesvm, falsenegativesvm)
+    print("Building a MultinominalNB Classifier, SVM Classifier and a BernoulliNB Classifier with {} records from all files".format(str(len(trainlist))))
+    print("(NaiveBayesClassifier, SVM Classifier BernoulliNB Classifier) results on {} records from all files test set".format(str(len(testlist))))
+    actualSpam = 0
+    actualHam = 0
+    for x in testlistlabels:
+        if x == '1':
+            actualSpam += 1
+        elif x == '0':
+            actualHam += 1
+    print(tabulate([['SPAM', "("+str(truepositives)+", "+str(truepositivesvm)+", "+str(truepositivebern)+")", "("+str(falsepositives)+", "+str(falsepositivesvm)+", "+str(falsepositivebern)+")"], ['HAM', "("+str(falsenegatives)+", "+str(falsenegativesvm)+", "+str(falsenegativebern)+")", "("+str(truenegatives)+", "+str(truenegativesvm)+", "+str(truenegativebern)+")"],['ACTUAL',actualSpam,actualHam]],headers=["",'SPAM', 'HAM']))
+    print("FScore: ({},{},{}), Accuracy: ({},{},{}), Precision: ({},{},{}), TPR: ({},{},{}), TNR: ({},{},{})".format(fscore,fscoresvm,fscorebern,accuracy,accuracysvm,accuracybern, precision, precisionsvm, precisionbern, truepositiverate, truepositiveratesvm, truepositiveratebern, truenegativerate, truenegativeratesvm, truenegativeratebern))
+    print("--------------------------------------------------------------------------------------------------------------------------------------\n")
 
 if (__name__ == '__main__'):
     main()
