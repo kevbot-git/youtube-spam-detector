@@ -1,0 +1,300 @@
+Loading data for PosData/01-psy.csv
+Loading data for PosData/02-katy_perry.csv
+Loading data for PosData/03-lmfao.csv
+Loading data for PosData/04-eminem.csv
+Loading data for PosData/05-shakira.csv
+Building a MultinominalNB Classifier, SVM Classifier and a BernoulliNB Classifier with 245 records from PosData/01-psy.csv
+(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on 105 records from PosData/01-psy.csv test set
+_______________________
+      SPAM          HAM
+----  ------------  ------------
+SPAM  (48, 51, 47)  (5, 3, 1)
+HAM   (4, 1, 5)     (48, 50, 52)
+FScore: (0.91,0.96,0.94), Accuracy: (0.91,0.96,0.94), Precision: (0.91,0.94,0.98), TPR: (0.92,0.98,0.9), TNR: (0.91,0.94,0.98)
+_______________________
+(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on 105 records from PosData/02-katy_perry.csv test set
++++++++++++++++++++++++
+      SPAM          HAM
+----  ------------  ------------
+SPAM  (50, 49, 48)  (5, 10, 4)
+HAM   (2, 3, 4)     (48, 43, 49)
+
+FScore: (0.93,0.88,0.92), Accuracy: (0.93,0.88,0.92), Precision: (0.91,0.83,0.92), TPR: (0.96,0.94,0.92), TNR: (0.91,0.81,0.92)
++++++++++++++++++++++++
+(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on 132 records from PosData/03-lmfao.csv test set
++++++++++++++++++++++++
+      SPAM          HAM
+----  ------------  ------------
+SPAM  (48, 53, 43)  (15, 11, 9)
+HAM   (14, 9, 19)   (55, 59, 61)
+
+FScore: (0.77,0.84,0.75), Accuracy: (0.78,0.85,0.79), Precision: (0.76,0.83,0.83), TPR: (0.77,0.85,0.69), TNR: (0.79,0.84,0.87)
++++++++++++++++++++++++
+(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on 135 records from PosData/04-eminem.csv test set
++++++++++++++++++++++++
+      SPAM          HAM
+----  ------------  ------------
+SPAM  (64, 68, 65)  (16, 14, 12)
+HAM   (15, 11, 14)  (40, 42, 44)
+
+FScore: (0.81,0.84,0.83), Accuracy: (0.77,0.81,0.81), Precision: (0.8,0.83,0.84), TPR: (0.81,0.86,0.82), TNR: (0.71,0.75,0.79)
++++++++++++++++++++++++
+(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on 111 records from PosData/05-shakira.csv test set
++++++++++++++++++++++++
+      SPAM          HAM
+----  ------------  ------------
+SPAM  (34, 38, 37)  (13, 14, 10)
+HAM   (13, 9, 10)   (51, 50, 54)
+
+FScore: (0.72,0.77,0.79), Accuracy: (0.77,0.79,0.82), Precision: (0.72,0.73,0.79), TPR: (0.72,0.81,0.79), TNR: (0.8,0.78,0.84)
++++++++++++++++++++++++
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Building a MultinominalNB Classifier, SVM Classifier and a BernoulliNB Classifier with 245 records from PosData/02-katy_perry.csv
+(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on 105 records from PosData/02-katy_perry.csv test set
+_______________________
+      SPAM          HAM
+----  ------------  ------------
+SPAM  (44, 44, 39)  (8, 7, 0)
+HAM   (4, 4, 9)     (49, 50, 57)
+FScore: (0.88,0.89,0.9), Accuracy: (0.89,0.9,0.91), Precision: (0.85,0.86,1.0), TPR: (0.92,0.92,0.81), TNR: (0.86,0.88,1.0)
+_______________________
+(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on 105 records from PosData/01-psy.csv test set
++++++++++++++++++++++++
+      SPAM          HAM
+----  ------------  ------------
+SPAM  (48, 49, 35)  (11, 10, 1)
+HAM   (4, 3, 17)    (42, 43, 52)
+
+FScore: (0.86,0.88,0.8), Accuracy: (0.86,0.88,0.83), Precision: (0.81,0.83,0.97), TPR: (0.92,0.94,0.67), TNR: (0.79,0.81,0.98)
++++++++++++++++++++++++
+(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on 132 records from PosData/03-lmfao.csv test set
++++++++++++++++++++++++
+      SPAM          HAM
+----  ------------  ------------
+SPAM  (70, 67, 31)  (17, 12, 1)
+HAM   (4, 7, 43)    (41, 46, 57)
+
+FScore: (0.87,0.88,0.58), Accuracy: (0.84,0.86,0.67), Precision: (0.8,0.85,0.97), TPR: (0.95,0.91,0.42), TNR: (0.71,0.79,0.98)
++++++++++++++++++++++++
+(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on 135 records from PosData/04-eminem.csv test set
++++++++++++++++++++++++
+      SPAM          HAM
+----  ------------  ------------
+SPAM  (79, 78, 55)  (13, 14, 0)
+HAM   (3, 4, 27)    (40, 39, 53)
+
+FScore: (0.91,0.9,0.8), Accuracy: (0.88,0.87,0.8), Precision: (0.86,0.85,1.0), TPR: (0.96,0.95,0.67), TNR: (0.75,0.74,1.0)
++++++++++++++++++++++++
+(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on 111 records from PosData/05-shakira.csv test set
++++++++++++++++++++++++
+      SPAM          HAM
+----  ------------  ------------
+SPAM  (44, 43, 31)  (11, 6, 0)
+HAM   (6, 7, 19)    (50, 55, 61)
+
+FScore: (0.84,0.87,0.77), Accuracy: (0.85,0.88,0.83), Precision: (0.8,0.88,1.0), TPR: (0.88,0.86,0.62), TNR: (0.82,0.9,1.0)
++++++++++++++++++++++++
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Building a MultinominalNB Classifier, SVM Classifier and a BernoulliNB Classifier with 306 records from PosData/03-lmfao.csv
+(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on 132 records from PosData/03-lmfao.csv test set
+_______________________
+      SPAM          HAM
+----  ------------  ------------
+SPAM  (73, 70, 64)  (13, 1, 0)
+HAM   (3, 6, 12)    (43, 55, 56)
+FScore: (0.9,0.95,0.91), Accuracy: (0.88,0.95,0.91), Precision: (0.85,0.99,1.0), TPR: (0.96,0.92,0.84), TNR: (0.77,0.98,1.0)
+_______________________
+(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on 105 records from PosData/01-psy.csv test set
++++++++++++++++++++++++
+      SPAM          HAM
+----  ------------  ------------
+SPAM  (46, 41, 26)  (39, 31, 20)
+HAM   (0, 5, 20)    (20, 28, 39)
+
+FScore: (0.7,0.69,0.57), Accuracy: (0.63,0.66,0.62), Precision: (0.54,0.57,0.57), TPR: (1.0,0.89,0.57), TNR: (0.34,0.47,0.66)
++++++++++++++++++++++++
+(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on 105 records from PosData/02-katy_perry.csv test set
++++++++++++++++++++++++
+      SPAM          HAM
+----  ------------  ------------
+SPAM  (50, 44, 37)  (19, 18, 8)
+HAM   (6, 12, 19)   (30, 31, 41)
+
+FScore: (0.8,0.75,0.73), Accuracy: (0.76,0.71,0.74), Precision: (0.72,0.71,0.82), TPR: (0.89,0.79,0.66), TNR: (0.61,0.63,0.84)
++++++++++++++++++++++++
+(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on 135 records from PosData/04-eminem.csv test set
++++++++++++++++++++++++
+      SPAM          HAM
+----  ------------  ------------
+SPAM  (72, 73, 66)  (15, 2, 2)
+HAM   (2, 1, 8)     (46, 59, 59)
+
+FScore: (0.89,0.98,0.93), Accuracy: (0.87,0.98,0.93), Precision: (0.83,0.97,0.97), TPR: (0.97,0.99,0.89), TNR: (0.75,0.97,0.97)
++++++++++++++++++++++++
+(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on 111 records from PosData/05-shakira.csv test set
++++++++++++++++++++++++
+      SPAM          HAM
+----  ------------  ------------
+SPAM  (47, 47, 36)  (17, 5, 1)
+HAM   (4, 4, 15)    (43, 55, 59)
+
+FScore: (0.82,0.91,0.82), Accuracy: (0.81,0.92,0.86), Precision: (0.73,0.9,0.97), TPR: (0.92,0.92,0.71), TNR: (0.72,0.92,0.98)
++++++++++++++++++++++++
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Building a MultinominalNB Classifier, SVM Classifier and a BernoulliNB Classifier with 313 records from PosData/04-eminem.csv
+(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on 135 records from PosData/04-eminem.csv test set
+_______________________
+      SPAM          HAM
+----  ------------  ------------
+SPAM  (78, 77, 63)  (12, 2, 1)
+HAM   (0, 1, 15)    (45, 55, 56)
+FScore: (0.93,0.98,0.89), Accuracy: (0.91,0.98,0.88), Precision: (0.87,0.97,0.98), TPR: (1.0,0.99,0.81), TNR: (0.79,0.96,0.98)
+_______________________
+(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on 105 records from PosData/01-psy.csv test set
++++++++++++++++++++++++
+      SPAM          HAM
+----  ------------  ------------
+SPAM  (50, 47, 25)  (42, 21, 18)
+HAM   (0, 3, 25)    (13, 34, 37)
+
+FScore: (0.7,0.8,0.54), Accuracy: (0.6,0.77,0.59), Precision: (0.54,0.69,0.58), TPR: (1.0,0.94,0.5), TNR: (0.24,0.62,0.67)
++++++++++++++++++++++++
+(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on 105 records from PosData/02-katy_perry.csv test set
++++++++++++++++++++++++
+      SPAM          HAM
+----  ------------  ------------
+SPAM  (51, 44, 27)  (39, 17, 14)
+HAM   (1, 8, 25)    (14, 36, 39)
+
+FScore: (0.72,0.78,0.58), Accuracy: (0.62,0.76,0.63), Precision: (0.57,0.72,0.66), TPR: (0.98,0.85,0.52), TNR: (0.26,0.68,0.74)
++++++++++++++++++++++++
+(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on 132 records from PosData/03-lmfao.csv test set
++++++++++++++++++++++++
+      SPAM          HAM
+----  ------------  ------------
+SPAM  (69, 62, 51)  (12, 3, 1)
+HAM   (7, 14, 25)   (44, 53, 55)
+
+FScore: (0.88,0.88,0.8), Accuracy: (0.86,0.87,0.8), Precision: (0.85,0.95,0.98), TPR: (0.91,0.82,0.67), TNR: (0.79,0.95,0.98)
++++++++++++++++++++++++
+(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on 111 records from PosData/05-shakira.csv test set
++++++++++++++++++++++++
+      SPAM          HAM
+----  ------------  ------------
+SPAM  (52, 44, 34)  (11, 1, 1)
+HAM   (4, 12, 22)   (44, 54, 54)
+
+FScore: (0.87,0.87,0.75), Accuracy: (0.86,0.88,0.79), Precision: (0.83,0.98,0.97), TPR: (0.93,0.79,0.61), TNR: (0.8,0.98,0.98)
++++++++++++++++++++++++
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Building a MultinominalNB Classifier, SVM Classifier and a BernoulliNB Classifier with 259 records from PosData/05-shakira.csv
+(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on 111 records from PosData/05-shakira.csv test set
+_______________________
+      SPAM          HAM
+----  ------------  ------------
+SPAM  (43, 41, 24)  (18, 4, 0)
+HAM   (1, 3, 20)    (49, 63, 67)
+FScore: (0.82,0.92,0.71), Accuracy: (0.83,0.94,0.82), Precision: (0.7,0.91,1.0), TPR: (0.98,0.93,0.55), TNR: (0.73,0.94,1.0)
+_______________________
+(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on 105 records from PosData/01-psy.csv test set
++++++++++++++++++++++++
+      SPAM          HAM
+----  ------------  -----------
+SPAM  (54, 52, 16)  (45, 30, 9)
+HAM   (0, 2, 38)    (6, 21, 42)
+
+FScore: (0.71,0.76,0.41), Accuracy: (0.57,0.7,0.55), Precision: (0.55,0.63,0.64), TPR: (1.0,0.96,0.3), TNR: (0.12,0.41,0.82)
++++++++++++++++++++++++
+(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on 105 records from PosData/02-katy_perry.csv test set
++++++++++++++++++++++++
+      SPAM          HAM
+----  ------------  ------------
+SPAM  (52, 46, 18)  (38, 25, 6)
+HAM   (0, 6, 34)    (15, 28, 47)
+
+FScore: (0.73,0.75,0.47), Accuracy: (0.64,0.7,0.62), Precision: (0.58,0.65,0.75), TPR: (1.0,0.88,0.35), TNR: (0.28,0.53,0.89)
++++++++++++++++++++++++
+(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on 132 records from PosData/03-lmfao.csv test set
++++++++++++++++++++++++
+      SPAM          HAM
+----  ------------  ------------
+SPAM  (73, 69, 13)  (27, 7, 0)
+HAM   (1, 5, 61)    (31, 51, 58)
+
+FScore: (0.84,0.92,0.3), Accuracy: (0.79,0.91,0.54), Precision: (0.73,0.91,1.0), TPR: (0.99,0.93,0.18), TNR: (0.53,0.88,1.0)
++++++++++++++++++++++++
+(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on 135 records from PosData/04-eminem.csv test set
++++++++++++++++++++++++
+      SPAM          HAM
+----  ------------  ------------
+SPAM  (68, 67, 34)  (32, 11, 2)
+HAM   (0, 1, 34)    (35, 56, 65)
+
+FScore: (0.81,0.92,0.65), Accuracy: (0.76,0.91,0.73), Precision: (0.68,0.86,0.94), TPR: (1.0,0.99,0.5), TNR: (0.52,0.84,0.97)
++++++++++++++++++++++++
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Building a MultinominalNB Classifier, SVM Classifier and a BernoulliNB Classifier with 1606 records from all files except PosData/01-psy.csv
+(NaiveBayesClassifier, SVM Classifier BernoulliNB Classifier) results on 350 records from PosData/01-psy.csv test set
+        SPAM             HAM
+------  ---------------  --------------
+SPAM    (175, 172, 107)  (120, 54, 40)
+HAM     (0, 3, 68)       (55, 121, 135)
+ACTUAL  175              175
+FScore: (0.74,0.86,0.66), Accuracy: (0.66,0.84,0.69), Precision: (0.59,0.76,0.73), TPR: (1.0,0.98,0.61), TNR: (0.31,0.69,0.77)
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Building a MultinominalNB Classifier, SVM Classifier and a BernoulliNB Classifier with 1606 records from all files except PosData/02-katy_perry.csv
+(NaiveBayesClassifier, SVM Classifier BernoulliNB Classifier) results on 350 records from PosData/02-katy_perry.csv test set
+        SPAM             HAM
+------  ---------------  --------------
+SPAM    (175, 170, 131)  (84, 44, 28)
+HAM     (0, 5, 44)       (91, 131, 147)
+ACTUAL  175              175
+FScore: (0.81,0.87,0.78), Accuracy: (0.76,0.86,0.79), Precision: (0.68,0.79,0.82), TPR: (1.0,0.97,0.75), TNR: (0.52,0.75,0.84)
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Building a MultinominalNB Classifier, SVM Classifier and a BernoulliNB Classifier with 1518 records from all files except PosData/03-lmfao.csv
+(NaiveBayesClassifier, SVM Classifier BernoulliNB Classifier) results on 438 records from PosData/03-lmfao.csv test set
+        SPAM            HAM
+------  --------------  ---------------
+SPAM    (219, 207, 73)  (19, 7, 4)
+HAM     (17, 29, 163)   (183, 195, 198)
+ACTUAL  236             202
+FScore: (0.92,0.92,0.47), Accuracy: (0.92,0.92,0.62), Precision: (0.92,0.97,0.95), TPR: (0.93,0.88,0.31), TNR: (0.91,0.97,0.98)
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Building a MultinominalNB Classifier, SVM Classifier and a BernoulliNB Classifier with 1508 records from all files except PosData/04-eminem.csv
+(NaiveBayesClassifier, SVM Classifier BernoulliNB Classifier) results on 448 records from PosData/04-eminem.csv test set
+        SPAM             HAM
+------  ---------------  ---------------
+SPAM    (239, 236, 209)  (33, 12, 5)
+HAM     (6, 9, 36)       (170, 191, 198)
+ACTUAL  245              203
+FScore: (0.92,0.96,0.91), Accuracy: (0.91,0.95,0.91), Precision: (0.88,0.95,0.98), TPR: (0.98,0.96,0.85), TNR: (0.84,0.94,0.98)
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Building a MultinominalNB Classifier, SVM Classifier and a BernoulliNB Classifier with 1586 records from all files except PosData/05-shakira.csv
+(NaiveBayesClassifier, SVM Classifier BernoulliNB Classifier) results on 370 records from PosData/05-shakira.csv test set
+        SPAM             HAM
+------  ---------------  ---------------
+SPAM    (164, 149, 133)  (18, 1, 2)
+HAM     (10, 25, 41)     (178, 195, 194)
+ACTUAL  174              196
+FScore: (0.92,0.92,0.86), Accuracy: (0.92,0.93,0.88), Precision: (0.9,0.99,0.99), TPR: (0.94,0.86,0.76), TNR: (0.91,0.99,0.99)
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Building a MultinominalNB Classifier, SVM Classifier and a BernoulliNB Classifier with 1369 records from all files
+(NaiveBayesClassifier, SVM Classifier BernoulliNB Classifier) results on 587 records from all files test set
+        SPAM             HAM
+------  ---------------  ---------------
+SPAM    (299, 293, 222)  (62, 13, 15)
+HAM     (6, 12, 83)      (220, 269, 267)
+ACTUAL  305              282
+FScore: (0.9,0.96,0.82), Accuracy: (0.88,0.96,0.83), Precision: (0.83,0.96,0.94), TPR: (0.98,0.96,0.73), TNR: (0.78,0.95,0.95)
+--------------------------------------------------------------------------------------------------------------------------------------
+
