@@ -39,7 +39,15 @@ def buildconfusionmetrics(guesses, realities):
                 falsenegatives+=1
     return truepositives, truenegatives, falsepositives, falsenegatives
 
-
+allPbern=[]
+allPSVM=[]
+allP=[]
+allTPRbern=[]
+allTPRSVM=[]
+allTPR=[]
+allFscoresbern=[]
+allFscoresSVM=[]
+allFscores=[]
 
 
 def main():
@@ -66,6 +74,15 @@ def main():
         fscore, accuracy,truepositiverate,truenegativerate, precision = computeStatistics(truepositives, truenegatives, falsepositives, falsenegatives)
         fscorebern, accuracybern,truepositiveratebern,truenegativeratebern, precisionbern = computeStatistics(truepositivebern, truenegativebern, falsepositivebern, falsenegativebern)
         fscoresvm, accuracysvm,truepositiveratesvm,truenegativeratesvm, precisionsvm = computeStatistics(truepositivesvm, truenegativesvm, falsepositivesvm, falsenegativesvm)
+        allFscores.append(fscore)
+        allFscoresSVM.append(fscoresvm)
+        allFscoresbern.append(fscorebern)
+        allTPRSVM.append(truepositiveratesvm)
+        allTPRbern.append(truepositiveratebern)
+        allTPR.append(truepositiverate)
+        allP.append(precision)
+        allPSVM.append(precisionsvm)
+        allPbern.append(precisionbern)
         print("(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on {} records from {} test set".format(str(len(test)), data_filenames[y]))
         print("_______________________")
         print(tabulate([['SPAM', "("+str(truepositives)+", "+str(truepositivesvm)+", "+str(truepositivebern)+")", "("+str(falsepositives)+", "+str(falsepositivesvm)+", "+str(falsepositivebern)+")"], ['HAM', "("+str(falsenegatives)+", "+str(falsenegativesvm)+", "+str(falsenegativebern)+")", "("+str(truenegatives)+", "+str(truenegativesvm)+", "+str(truenegativebern)+")"]],headers=["",'SPAM', 'HAM']))
@@ -84,6 +101,15 @@ def main():
                 fscore, accuracy,truepositiverate,truenegativerate, precision = computeStatistics(truepositives, truenegatives, falsepositives, falsenegatives)
                 fscorebern, accuracybern,truepositiveratebern,truenegativeratebern, precisionbern = computeStatistics(truepositivebern, truenegativebern, falsepositivebern, falsenegativebern)
                 fscoresvm, accuracysvm,truepositiveratesvm,truenegativeratesvm, precisionsvm = computeStatistics(truepositivesvm, truenegativesvm, falsepositivesvm, falsenegativesvm)
+                allFscores.append(fscore)
+                allFscoresSVM.append(fscoresvm)
+                allFscoresbern.append(fscorebern)
+                allTPRSVM.append(truepositiveratesvm)
+                allTPRbern.append(truepositiveratebern)
+                allTPR.append(truepositiverate)
+                allP.append(precision)
+                allPSVM.append(precisionsvm)
+                allPbern.append(precisionbern)
                 print("(MultinominalNB Classifier, SVM Classifier, BernoulliNB Classifier) results on {} records from {} test set".format(str(len(test)), data_filenames[ytoo]))
                 print("+++++++++++++++++++++++")
                 print(tabulate([['SPAM', "("+str(truepositives)+", "+str(truepositivesvm)+", "+str(truepositivebern)+")", "("+str(falsepositives)+", "+str(falsepositivesvm)+", "+str(falsepositivebern)+")"], ['HAM', "("+str(falsenegatives)+", "+str(falsenegativesvm)+", "+str(falsenegativebern)+")", "("+str(truenegatives)+", "+str(truenegativesvm)+", "+str(truenegativebern)+")"]],headers=["",'SPAM', 'HAM']))
@@ -120,6 +146,15 @@ def main():
         fscore, accuracy,truepositiverate,truenegativerate, precision = computeStatistics(truepositives, truenegatives, falsepositives, falsenegatives)
         fscorebern, accuracybern,truepositiveratebern,truenegativeratebern, precisionbern = computeStatistics(truepositivebern, truenegativebern, falsepositivebern, falsenegativebern)
         fscoresvm, accuracysvm,truepositiveratesvm,truenegativeratesvm, precisionsvm = computeStatistics(truepositivesvm, truenegativesvm, falsepositivesvm, falsenegativesvm)
+        allFscores.append(fscore)
+        allFscoresSVM.append(fscoresvm)
+        allFscoresbern.append(fscorebern)
+        allTPRSVM.append(truepositiveratesvm)
+        allTPRbern.append(truepositiveratebern)
+        allTPR.append(truepositiverate)
+        allP.append(precision)
+        allPSVM.append(precisionsvm)
+        allPbern.append(precisionbern)
         actualSpam = 0
         actualHam = 0
         for x in testsetclasses:
@@ -157,6 +192,15 @@ def main():
     fscore, accuracy,truepositiverate,truenegativerate, precision = computeStatistics(truepositives, truenegatives, falsepositives, falsenegatives)
     fscorebern, accuracybern,truepositiveratebern,truenegativeratebern, precisionbern = computeStatistics(truepositivebern, truenegativebern, falsepositivebern, falsenegativebern)
     fscoresvm, accuracysvm,truepositiveratesvm,truenegativeratesvm, precisionsvm = computeStatistics(truepositivesvm, truenegativesvm, falsepositivesvm, falsenegativesvm)
+    allFscores.append(fscore)
+    allFscoresSVM.append(fscoresvm)
+    allFscoresbern.append(fscorebern)
+    allTPRSVM.append(truepositiveratesvm)
+    allTPRbern.append(truepositiveratebern)
+    allTPR.append(truepositiverate)
+    allP.append(precision)
+    allPSVM.append(precisionsvm)
+    allPbern.append(precisionbern)
     print("Building a MultinominalNB Classifier, SVM Classifier and a BernoulliNB Classifier with {} records from all files".format(str(len(trainlist))))
     print("(NaiveBayesClassifier, SVM Classifier BernoulliNB Classifier) results on {} records from all files test set".format(str(len(testlist))))
     actualSpam = 0
@@ -169,6 +213,16 @@ def main():
     print(tabulate([['SPAM', "("+str(truepositives)+", "+str(truepositivesvm)+", "+str(truepositivebern)+")", "("+str(falsepositives)+", "+str(falsepositivesvm)+", "+str(falsepositivebern)+")"], ['HAM', "("+str(falsenegatives)+", "+str(falsenegativesvm)+", "+str(falsenegativebern)+")", "("+str(truenegatives)+", "+str(truenegativesvm)+", "+str(truenegativebern)+")"],['ACTUAL',actualSpam,actualHam]],headers=["",'SPAM', 'HAM']))
     print("FScore: ({},{},{}), Accuracy: ({},{},{}), Precision: ({},{},{}), TPR: ({},{},{}), TNR: ({},{},{})".format(fscore,fscoresvm,fscorebern,accuracy,accuracysvm,accuracybern, precision, precisionsvm, precisionbern, truepositiverate, truepositiveratesvm, truepositiveratebern, truenegativerate, truenegativeratesvm, truenegativeratebern))
     print("--------------------------------------------------------------------------------------------------------------------------------------\n")
+    print("Fscores: "+str(allFscores))
+    print("FscoresSVM: "+str(allFscoresSVM))
+    print("FscoresBERN: "+str(allFscoresbern))
+    print("Precision: "+str(allP))
+    print("PrecisionSVM: "+str(allPSVM))
+    print("PrecisionBERN: "+str(allPbern))
+    print("TPR: "+str(allTPR))
+    print("TPR SVM: "+str(allTPRSVM))
+    print("TPR BERN: "+str(allTPRbern))
+
 
 if (__name__ == '__main__'):
     main()
